@@ -2,7 +2,7 @@ class Transformer:
     def __init__(self,serial_number,rated_power):
         self.serial_number = serial_number
         self.rated_power = rated_power
-        self.temperature = 0
+        self.temperature = 20
         self.current_load = 0
         self.load_percentage = 0
         
