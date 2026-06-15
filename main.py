@@ -10,14 +10,5 @@ environment= Environment()
 daily_report = DailyReport()
 simulation = Simulation(transformer,environment,daily_report)
 print("========================") 
-simulation.simulate("summer") 
-
-max_ = daily_report.calculate_average_load()
-
-print(max_) 
-print("========================")  
-print("========================") 
-print("========================") 
-        
-
+simulation.simulate("summer")
 
