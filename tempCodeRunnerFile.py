@@ -1,1 +1,0 @@
-min_temp = daily_report.find_min_temperature()

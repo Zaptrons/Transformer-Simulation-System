@@ -1,4 +1,4 @@
-from Enviroment import Environment
+from Environment import Environment
 from Sensors.Load_Sensor import LoadSensor
 from Sensors.Temperature_sensor import TemperatureSensor
 from Simulation import Simulation
@@ -8,7 +8,11 @@ from DailyReport import DailyReport
 transformer = Transformer(input("Serial Nomber: "), int(input("Rated Power: ")))
 environment= Environment()
 daily_report = DailyReport()
-simulation = Simulation(transformer,environment,daily_report)
+temperature_sensor = TemperatureSensor(environment)
+load_sensor = LoadSensor(environment)
+simulation = Simulation(transformer,daily_report,temperature_sensor,load_sensor)
 print("========================") 
-simulation.simulate("summer")
+status = simulation.simulate_hour("summer", 14)
+for key,value in status.items():
+    print(f"{key} : {value}")
 

@@ -1,4 +1,7 @@
 class LoadSensor:
-    def read(self,season,hour):
-        Load = self.environment.get_load_profile[season][hour]
-        return Load 
+    def __init__(self,environment):
+        self.environment = environment
+
+    def read_load(self,season,hour):
+        return self.environment.get_hour_load_profile(season,hour)
+         

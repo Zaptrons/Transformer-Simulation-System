@@ -1,5 +1,8 @@
 
 class TemperatureSensor:
-    def read(self,season,hour):
-        Temp = self.environment.get_temperature[season][hour]
-        return Temp
+    def __init__(self,environment):
+        self.environment = environment
+
+    def read_temperature(self,season,hour):
+         return self.environment.get_hour_temperature(season,hour)
+      
