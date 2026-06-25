@@ -9,7 +9,7 @@ class DailyReport:
         for report in self.daily_report:
             for key,value in report.items():
                 print(f"{key} : {value}")
-        print("------------------------")
+            print("------------------------")
 
     def find_max_temperature(self):
         if not self.daily_report:
