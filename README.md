@@ -1,146 +1,133 @@
-# Transformer Digital Twin
+> 🚧 Active Development
 
-## Overview
+# Transformer Simulation System
 
-This project aims to develop a **Digital Twin** for distribution transformers.
-
-The system simulates transformer operation under different environmental and loading conditions, estimates thermal behavior, and provides the foundation for intelligent monitoring, early warning, and predictive maintenance.
-
-The project is designed as both an educational platform and a prototype for future industrial applications.
+A modular Python framework for distribution transformer simulation.
 
 ---
 
-## Project Goals
+# Overview
 
-* Simulate transformer operating conditions
-* Model ambient temperature and load profiles
-* Estimate transformer thermal behavior
-* Generate operational reports
-* Develop an intelligent warning system
-* Support predictive maintenance
+This project models the hourly operation of a distribution transformer by combining:
+
+* Ambient temperature
+* Load profile
+* Transformer operating state
+* Time progression
+* Daily reporting
+
+The project is designed with clean architecture principles to make future expansion simple and maintainable.
 
 ---
 
-## Current Features
+# Current Features
 
-* Stable simulation engine
-* Clock and Calendar system
-* Time management engine
-* Hourly simulation
-* Daily simulation
-* Monthly simulation
-* Yearly simulation
-* Environment simulation
-* Temperature sensor model
-* Load sensor model
-* Transformer operating model
+* Hourly simulation engine
+* Modular time management
+
+  * Clock
+  * Calendar
+  * TimeEngine
+* Temperature sensor simulation
+* Load sensor simulation
+* Transformer operating state calculation
 * Daily report generation
+* Dependency Injection architecture
+* Clean separation of responsibilities
 
 ---
 
-## Current Architecture
+# Project Architecture
 
-```
+```text
 Simulation
 │
 ├── TimeEngine
-│   ├── Clock
-│   └── Calendar
+│     ├── Clock
+│     └── Calendar
 │
-├── Environment
-│
-├── Sensors
-│   ├── TemperatureSensor
-│   └── LoadSensor
-│
+├── TemperatureSensor
+├── LoadSensor
 ├── Transformer
-│
 └── DailyReport
 ```
 
 ---
 
-## Example Output
+# Example Output
 
-Each simulated hour generates a structured record:
-
-```json
+```python
 {
-  "Hour": 14,
-  "Day": 5,
-  "Month": 7,
-  "Year": 0,
-  "Season": "Summer",
-  "Temperature": 76.5,
-  "Current Load": 475.0,
-  "Load Percentage": 75
+    "Record Number": 125,
+    "Hour": 14,
+    "Day": 6,
+    "Month": 3,
+    "Year": 0,
+    "Season": "Spring",
+
+    "Ambient Temperature": 31.4,
+    "Current Load": 482.3,
+    "Load Percentage": 76.2,
+    "Oil Temperature": 68.7
 }
 ```
 
 ---
 
-## Development Roadmap
+# Development Status
 
-### Version 0.2
+## Version 0.3
 
-* Stable simulation engine
-* Time management architecture
-* One-year simulation
+Current Status
 
-### Version 0.3
-
-* Realistic daily load profiles
-* Seasonal temperature profiles
-
-### Version 0.4
-
-* Transformer thermal model
-* Hot-spot temperature estimation
-
-### Version 0.5
-
-* Intelligent warning system
-* Thermal stress analysis
-
-### Version 0.6
-
-* Predictive maintenance
-* Remaining lifetime estimation
-
-### Version 1.0
-
-* Complete Digital Twin
-* Dashboard
-* Data visualization
-* Industrial demonstration
+- Stable simulation architecture
+- Stable time management subsystem
+- Stable simulation workflow
+- Modular project structure
 
 ---
 
-## Technologies
+# Roadmap
+
+## Version 0.4
+
+* Improved transformer thermal model
+* Better operating state calculations
+
+## Version 0.5
+
+* Historical statistical analysis
+* Data visualization
+
+## Version 0.6
+
+* Multiple transformer simulation
+* Network-level analysis
+
+## Future Goals
+
+* Automatic feeder load balancing
+* Intelligent transformer loading analysis
+* Distribution network optimization
+* STM32 / ESP hardware integration
+* Web dashboard
+
+---
+
+# Technologies
 
 * Python
 * Object-Oriented Programming (OOP)
-* Clean Architecture
-* Simulation
-* Git
-* GitHub
+* Dependency Injection
+* Clean Architecture principles
 
 ---
 
-## Author
+# Author
 
 **Hadi Norouzi**
 
-Electronic Engineer
+Electrical & Embedded Systems Engineer
 
-Embedded Systems Developer
-
-Python Developer
-
----
-
-## Project Status
-
-**Version:** v0.2
-
-The simulation engine is stable and under active development toward a complete Digital Twin platform.
+Repository:
+https://github.com/Zaptrons/Transformer-Simulation-System
