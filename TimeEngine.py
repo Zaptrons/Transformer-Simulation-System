@@ -6,6 +6,15 @@ class TimeEngine:
         self.clock = clock
         self.calendar = calendar
 
+    def get_hours_in_day(self):
+        return self.clock.HOURS_IN_DAY
+    
+    def get_days_in_month(self):
+        return self.calendar.get_days_in_month()
+    
+    def get_month_in_year(self):
+        return self.calendar.get_month_in_year()
+        
     def get_time(self):
         return {
             "Hour": self.clock.get_hour(),
@@ -19,6 +28,7 @@ class TimeEngine:
 
         self.clock.tick()
 
-        if self.clock.get_hour() >= Clock.HOURS_IN_DAY:
-            self.clock.reset()
+        if self.clock.is_new_day():
             self.calendar.next_day()
+    
+    

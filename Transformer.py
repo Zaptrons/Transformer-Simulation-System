@@ -16,7 +16,7 @@ class Transformer:
         self.current_load = self.rated_power * (hour_load_profile / 100)
         
 
-    def update_status(self, hour_load_profile, hour_ambient_temp):
+    def update_status(self,hour_ambient_temp, hour_load_profile):
         self.load_percentage = hour_load_profile
         self.__calculate_current_load(hour_load_profile)
         self.__calculate_temperature(hour_ambient_temp)

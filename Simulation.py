@@ -1,7 +1,5 @@
 class Simulation:
 
-    MONTHS_IN_YEAR = 12
-
     def __init__(
         self,
         transformer,
@@ -22,20 +20,21 @@ class Simulation:
     # Private Methods
     # -------------------------
 
-    def __get_hour_temperature(self, season, hour):
-        return self.temp_sensor.read_temperature(season, hour)
+    def __read_sensors(self,season,hour):
+        return {
+            "temperature" : self.temp_sensor.read_temperature(season,hour),
+            "load" : self.load_sensor.read_load(season,hour)
+        }
 
-    def __get_hour_load(self, season, hour):
-        return self.load_sensor.read_load(season, hour)
 
-    def __simulate_transformer(self, season, hour):
 
-        ambient_temp = self.__get_hour_temperature(season, hour)
-        load = self.__get_hour_load(season, hour)
+    def __simulate_transformer(self,season, hour):
+
+        sens = self.__read_sensors(season,hour)
 
         self.transformer.update_status(
-            ambient_temp,
-            load
+            sens["temperature"],
+            sens["load"]
         )
 
         return self.transformer.get_status()
@@ -70,7 +69,7 @@ class Simulation:
 
     def simulate_day(self):
 
-        for _ in range(self.time_engine.clock.HOURS_IN_DAY):
+        for _ in range(self.time_engine.get_hours_in_day()):
 
             self.simulate_hour()
 
@@ -78,15 +77,13 @@ class Simulation:
 
     def simulate_month(self):
 
-        days = self.time_engine.calendar.get_days_in_month()
-
-        for _ in range(days):
+        for _ in range(self.time_engine.get_days_in_month()):
 
             self.simulate_day()
 
     def simulate_year(self):
 
-        for _ in range(self.MONTHS_IN_YEAR):
+        for _ in range(self.time_engine.get_month_in_year()):
 
             self.simulate_month()
 
